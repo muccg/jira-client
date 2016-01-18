@@ -1,7 +1,7 @@
 import config
 import utils
 
-if not utils.validate_credentails():
+if not utils.validate_credentials():
     print "Please check your credentials"
     exit(0)
 
