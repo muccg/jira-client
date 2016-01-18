@@ -12,7 +12,6 @@ def _get_credentails(config_file_path):
     
     config_parser = ConfigParser.RawConfigParser()
     if os.path.exists(config_file_path):
-        print "Reading your JIRA credentials from a file..."
         config_parser.read(config_file_path)
         username = config_parser.get(config._SECTION, "username")
         password = config_parser.get(config._SECTION, "password")
