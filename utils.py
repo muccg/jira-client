@@ -39,6 +39,14 @@ def print_progress(index, total):
     sys.stdout.write("\rTicket %d out of %d done" % (index, total))
     sys.stdout.flush()
 
+def validate_credentails():
+    username, password = _get_credentails(_get_config_file())
+    params = {"username": username}
+    results = requests.get(config._BASE_URL + config._USER, auth=HTTPBasicAuth(username, password), params=params)
+    if results.status_code == 401:
+        return False
+    return True
+
 def get_request_auth(api_call, params=None, json=True):
     username, password = _get_credentails(_get_config_file())
     if params:

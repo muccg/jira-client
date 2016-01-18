@@ -1,6 +1,10 @@
 import config
 import utils
 
+if not utils.validate_credentails():
+    print "Please check your credentials"
+    exit(0)
+
 projects = utils.get_request_auth(config._PROJECTS)
 
 print "\nProjects"
