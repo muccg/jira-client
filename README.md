@@ -11,8 +11,8 @@ jira-client is available as a Docker container from dockerhub in muccg/jira-cli.
 The jiracli script will fecth and run the container when invoked.
 
 ``` sh
-curl -L https://raw.githubusercontent.com/muccg/jira-client/master/jiracli > /usr/local/bin/jiracli
-chmod +x /usr/local/bin/jiracli
+$ sudo -L https://raw.githubusercontent.com/muccg/jira-client/master/jiracli > /usr/local/bin/jiracli
+$ sudo chmod +x /usr/local/bin/jiracli
 ```
 Now run `jiracli`, the container will be fecthed from dockerhub if not available locally.
 
