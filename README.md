@@ -7,6 +7,8 @@ Tool to access JIRA using the CLI.
 Run <code>python client.py</code>
 
 ## Install to run from container
+jira-client is available as a Docker container from dockerhub in muccg/jira-cli. 
+The jiracli script will fecth and run the container when invoked.
 
 ``` sh
 curl -L https://raw.githubusercontent.com/muccg/jira-client/master/jiracli > /usr/local/bin/jiracli
