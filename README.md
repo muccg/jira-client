@@ -7,7 +7,7 @@ Run <code>python client.py</code>
 
 ## Install to run from container
 ``` sh
-curl -L https://github.com/muccg/jira-client/blob/master/jira > /usr/local/bin/jiracli
+curl -L https://raw.githubusercontent.com/muccg/jira-client/master/jiracli > /usr/local/bin/jiracli
 chmod +x /usr/local/bin/jiracli
 ```
 Now rin *jiracli*, the container will be fecthed from dockerhub if not available locally.
