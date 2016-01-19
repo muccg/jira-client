@@ -1,5 +1,6 @@
 # JIRA client
 
+Tool to access JIRA using the CLI.
 
 ## Usage from source
 
