@@ -13,10 +13,17 @@ if projects:
         print " - %s (%s)" % (project["name"], project["key"])
 
 project_key = raw_input("\nProject key: ")
-search_term = raw_input("Search term: ")
+search_term = raw_input("Search term (optional): ")
+ticket_id = raw_input("Ticket ID (optional): ")
 
 params = {}
-params["jql"] = "project=%s AND text~'%s'" % (project_key, search_term)
+params["jql"] = "project=%s" % project_key
+
+if search_term:
+    params["jql"] = params["jql"] + " AND text~'%s'" % search_term
+if ticket_id:
+    params["jql"] = params["jql"] + " AND issue='%s'" % ticket_id
+
 params["maxResults"] = config._MAX_SEARCH_RESULTS
 params["fields"] = ["summary",]
 
