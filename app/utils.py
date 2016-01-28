@@ -1,6 +1,6 @@
 import sys
 import time
-import ConfigParser
+import configparser
 import os.path
 import getpass
 import requests
@@ -10,14 +10,14 @@ import config
 
 def _get_credentails(config_file_path):
     
-    config_parser = ConfigParser.RawConfigParser()
+    config_parser = configparser.RawConfigParser()
     if os.path.exists(config_file_path):
         config_parser.read(config_file_path)
         username = config_parser.get(config._SECTION, "username")
         password = config_parser.get(config._SECTION, "password")
     else:
-        print "Your JIRA creadentials will be saved in %s" % (_get_config_file())
-        username = raw_input("Username: ")
+        print("Your JIRA creadentials will be saved in %s" % (_get_config_file()))
+        username = input("Username: ")
         password = getpass.getpass("Password: ")
     
         config_parser.add_section(config._SECTION)
