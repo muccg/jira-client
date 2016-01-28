@@ -2,19 +2,19 @@ import config
 import utils
 
 if not utils.validate_credentials():
-    print "Please check your credentials"
+    print("Please check your credentials")
     exit(0)
 
 projects = utils.get_request_auth(config._PROJECTS)
 
-print "\nProjects"
+print("\nProjects")
 if projects:
     for project in projects:
-        print " - %s (%s)" % (project["name"], project["key"])
+        print(" - %s (%s)" % (project["name"], project["key"]))
 
-project_key = raw_input("\nProject key: ")
-search_term = raw_input("Search term (optional): ")
-ticket_id = raw_input("Ticket ID (optional): ")
+project_key = input("\nProject key: ")
+search_term = input("Search term (optional): ")
+ticket_id = input("Ticket ID (optional): ")
 
 params = {}
 params["jql"] = "project=%s" % project_key
@@ -30,13 +30,13 @@ params["fields"] = ["summary",]
 search_result =  utils.get_request_auth(config._SEARCH, params)
 
 if "issues" in search_result and len(search_result["issues"]) != 0:
-    print "\nTicket found:"
+    print("\nTicket found:")
     issues = search_result["issues"]
     for issue in issues:
-        print "%s -> %s" % (issue["key"], issue["fields"]["summary"])
+        print("%s -> %s" % (issue["key"], issue["fields"]["summary"]))
         
-    print "\nWould you liket to tag/label the above ticket(s) with '%s'?" % search_term
-    prompt = raw_input("Proceed? [y/n] ")
+    print("\nWould you liket to tag/label the above ticket(s) with '%s'?" % search_term)
+    prompt = input("Proceed? [y/n] ")
     if prompt == "n":
         pass
     elif prompt == "y":
@@ -45,7 +45,7 @@ if "issues" in search_result and len(search_result["issues"]) != 0:
             if utils.put_request_auth(config._ISSUE_BY_KEY % issue["key"], payload):
                 utils.print_progress(index, len(issues))
 else:
-    print "\nNo tickets"
+    print("\nNo tickets")
 
-print "\n\nSee you next time!"
-print "Have a good day!"
+print("\n\nSee you next time!")
+print("Have a good day!")
