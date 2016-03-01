@@ -4,6 +4,7 @@ import ConfigParser
 import os.path
 import getpass
 import requests
+import json
 from requests.auth import HTTPBasicAuth
 
 import config
@@ -63,7 +64,7 @@ def get_request_auth(api_call, params=None, json=True):
 def put_request_auth(api_call, payload):
     username, password = _get_credentails(_get_config_file())
     headers = {"Content-Type": "application/json; charset=utf8"}
-    result = requests.put(config._BASE_URL + api_call, auth=HTTPBasicAuth(username, password), headers=headers, json=payload)
+    result = requests.put(config._BASE_URL + api_call, auth=HTTPBasicAuth(username, password), headers=headers, data=json.dumps(payload))
     if result.status_code == 204:
         return True
     return False
