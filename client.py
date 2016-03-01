@@ -13,7 +13,7 @@ if projects:
         print(" - %s (%s)" % (project["name"], project["key"]))
 
 project_key = raw_input("\nProject key: ")
-search_term = raw_input("Search term (optional): ")
+search_term = None #raw_input("Search term (optional): ")
 ticket_id = raw_input("Ticket ID (optional): ")
 
 params = {}
@@ -35,13 +35,13 @@ if "issues" in search_result and len(search_result["issues"]) != 0:
     for issue in issues:
         print "%s -> %s" % (issue["key"], issue["fields"]["summary"])
         
-    print "\nWould you liket to tag/label the above ticket(s) with '%s'?" % search_term
+    print "\nWould you liket to tag/label the above ticket(s) with '%s'?" % ticket_id
     prompt = raw_input("Proceed? [y/n] ")
     if prompt == "n":
         pass
     elif prompt == "y":
         for index, issue in enumerate(issues, start=1):
-            payload = utils.add_label_payload(search_term)
+            payload = utils.add_label_payload(ticket_id)
             if utils.put_request_auth(config._ISSUE_BY_KEY % issue["key"], payload):
                 utils.print_progress(index, len(issues))
 else:
