@@ -1,6 +1,6 @@
 import sys
 import time
-import configparser
+import ConfigParser
 import os.path
 import getpass
 import requests
@@ -10,7 +10,7 @@ import config
 
 def _get_credentails(config_file_path):
     
-    config_parser = configparser.RawConfigParser()
+    config_parser = ConfigParser.RawConfigParser()
     if os.path.exists(config_file_path):
         config_parser.read(config_file_path)
         username = config_parser.get(config._SECTION, "username")
